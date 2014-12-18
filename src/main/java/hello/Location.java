@@ -3,8 +3,9 @@ package hello;
 public class Location {
     private Double x;
     private Double y;
+    private Integer floor;
 
-    public Location(Double x, Double y) {
+    public Location(Double x, Double y, Integer floor) {
         this.x = x;
         this.y = y;
     }
@@ -18,5 +19,9 @@ public class Location {
 
     public Double getY() {
         return y;
+    }
+
+    public Integer getFloor() {
+        return floor;
     }
 }

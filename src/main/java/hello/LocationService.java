@@ -20,7 +20,7 @@ public class LocationService {
     @RequestMapping(method=RequestMethod.GET)
     public @ResponseBody
     List<PersonLocation> getLocations() {
-        List<PersonLocation> locations = Arrays.asList(new PersonLocation("Mark", new Location(1.1, 2.2)), new PersonLocation("Dave", new Location(9.9, 8.8)));
+        List<PersonLocation> locations = Arrays.asList(new PersonLocation("Mark", new Location(1.1, 2.2, 5)), new PersonLocation("Dave", new Location(9.9, 8.8, 4)));
         return locations;
     }
 }
