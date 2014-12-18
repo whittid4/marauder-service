@@ -1,16 +1,17 @@
-package hello;
+package marauder.pojo;
 
-public class Location {
+public class Position {
     private Double x;
     private Double y;
     private Integer floor;
 
-    public Location(Double x, Double y, Integer floor) {
+    public Position(Double x, Double y, Integer floor) {
         this.x = x;
         this.y = y;
+        this.floor = floor;
     }
 
-    public Location() {
+    public Position() {
     }
 
     public Double getX() {
