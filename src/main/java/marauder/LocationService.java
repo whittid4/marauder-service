@@ -23,8 +23,8 @@ public class LocationService {
     public @ResponseBody
     PersonPosition sendMyLocation(@RequestBody PersonPosition position) {
         position.setTimestamp(LocalDateTime.now());
-        PersonPosition personPosition = locationMap.addLocation(position);
-        return personPosition;
+        locationMap.addLocation(position);
+        return position;
     }
 
     @RequestMapping(method=RequestMethod.GET)
