@@ -4,6 +4,8 @@ import com.google.common.collect.Lists;
 import marauder.pojo.ItemPosition;
 import marauder.pojo.Position;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -49,8 +51,14 @@ public class LocationService {
 
     @RequestMapping(method=RequestMethod.GET)
     public @ResponseBody
-    Collection<ItemPosition> getLocations() {
-        return locationMap.getAllLocations();
+    ResponseEntity<Collection<ItemPosition>> getLocations() {
+        final Collection<ItemPosition> locations = locationMap.getAllLocations();
+
+        if(locations.isEmpty()) {
+            return new ResponseEntity<>(locations, HttpStatus.NO_CONTENT);
+        }
+
+        return new ResponseEntity<>(locations, HttpStatus.OK);
     }
 
     @RequestMapping("/hotspots")
