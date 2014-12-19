@@ -2,7 +2,7 @@ package marauder;
 
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
-import marauder.pojo.PersonPosition;
+import marauder.pojo.ItemPosition;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class LocationMap {
 
-    private static Cache<String, PersonPosition> locationMap;
+    private static Cache<String, ItemPosition> locationMap;
 
 
     public LocationMap() {
@@ -21,11 +21,11 @@ public class LocationMap {
 
     }
 
-    public void addLocation(PersonPosition newLocation) {
+    public void addLocation(ItemPosition newLocation) {
         locationMap.put(newLocation.getName(), newLocation);
     }
 
-    public Collection<PersonPosition> getAllLocations() {
+    public Collection<ItemPosition> getAllLocations() {
         return locationMap.asMap().values();
     }
 }

@@ -6,19 +6,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class PersonPosition {
+public class ItemPosition {
 
+    private String id;
     private String name;
     private Position position;
     private LocalDateTime timestamp;
 
-    public PersonPosition(String name, Position position, LocalDateTime timestamp) {
+    public ItemPosition(String id, String name, Position position, LocalDateTime timestamp) {
+        this.id = id;
         this.name = name;
         this.position = position;
         this.timestamp = timestamp;
     }
 
-    public PersonPosition() {
+    public ItemPosition() {
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getName() {
