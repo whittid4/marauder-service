@@ -3,20 +3,32 @@ buildscript {
         maven { url "https://repo.spring.io/libs-release" }
         mavenLocal()
         mavenCentral()
+        jcenter()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.10.RELEASE")
+        classpath("com.wiredforcode:gradle-heroku-plugin:1.0.0")
+        classpath("com.github.jengelman.gradle.plugins:shadow:1.2.0")
     }
 }
 
 apply plugin: 'java'
+apply plugin: 'com.github.johnrengelman.shadow'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
+apply plugin: 'heroku'
+apply plugin: 'application'
+
 
 jar {
-    baseName = 'marauder'
-    version =  '0.1.0'
+    manifest {
+        attributes 'Main-Class': 'marauder.Application'
+    }
+}
+
+shadowJar {
+    mergeServiceFiles()
 }
 
 repositories {
@@ -35,3 +47,16 @@ dependencies {
 task wrapper(type: Wrapper) {
     gradleVersion = '1.11'
 }
+
+heroku {
+    apiKey = '4046df6b-2390-46ea-ba2e-5c110542909f'
+
+    appName = 'marauder-service'
+}
+
+defaultTasks "clean", "build", "shadowJar"
+
+
+
+
+
